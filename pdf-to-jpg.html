@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PDF to JPG Converter - ToolMitra</title><meta name="description" content="Convert PDF pages to JPG images online for free with ToolMitra."><style>
+body{
+  font-family:Arial,sans-serif;
+  margin:0;
+  background:#f5f7fb;
+  color:#222;
+}
+
+header{
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  color:white;
+  text-align:center;
+  padding:35px 15px;
+}
+
+.container{
+  max-width:800px;
+  margin:30px auto;
+  padding:15px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+input{
+  margin:20px 0;
+}
+
+button{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+#result{
+  margin-top:20px;
+}
+
+.page{
+  background:#f9fafb;
+  padding:15px;
+  margin-top:20px;
+  border-radius:10px;
+}
+
+.page img{
+  max-width:100%;
+  border-radius:6px;
+}
+
+.download{
+  display:inline-block;
+  margin-top:10px;
+  background:#16a34a;
+  color:white;
+  padding:10px 15px;
+  border-radius:7px;
+  text-decoration:none;
+}
+
+.back{
+  display:inline-block;
+  margin-top:25px;
+  color:#2563eb;
+  text-decoration:none;
+}
+</style></head><body><header>
+  <h1>📄 PDF to JPG</h1>
+  <p>Convert PDF pages into JPG images</p>
+</header><div class="container"><div class="card"><h2>Convert PDF to JPG</h2><p>Select a PDF file and convert its pages into JPG images.</p><input type="file" id="pdfInput" accept="application/pdf"><br><button onclick="convertPDF()">Convert to JPG</button>
+
+<div id="result"></div><a class="back" href="index.html">← Back to ToolMitra</a>
+
+</div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script><script>
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+async function convertPDF(){
+
+  const input = document.getElementById('pdfInput');
+  const result = document.getElementById('result');
+
+  if(!input.files.length){
+    alert('Please select a PDF file first.');
+    return;
+  }
+
+  result.innerHTML = '<p>Converting PDF...</p>';
+
+  try{
+
+    const file = input.files[0];
+
+    const arrayBuffer = await file.arrayBuffer();
+
+    const pdf = await pdfjsLib.getDocument({
+      data: arrayBuffer
+    }).promise;
+
+    result.innerHTML =
+      '<p>Found ' + pdf.numPages + ' page(s).</p>';
+
+    for(let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++){
+
+      const page = await pdf.getPage(pageNumber);
+
+      const viewport = page.getViewport({
+        scale:2
+      });
+
+      const canvas = document.createElement('canvas');
+
+      const context = canvas.getContext('2d');
+
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+
+      await page.render({
+        canvasContext: context,
+        viewport: viewport
+      }).promise;
+
+      const image = canvas.toDataURL('image/jpeg',0.9);
+
+      const pageBox = document.createElement('div');
+
+      pageBox.className = 'page';
+
+      pageBox.innerHTML =
+        '<h3>Page ' + pageNumber + '</h3>' +
+        '<img src="' + image + '">' +
+        '<br>' +
+        '<a class="download" href="' + image +
+        '" download="page-' + pageNumber + '.jpg">' +
+        '⬇️ Download JPG' +
+        '</a>';
+
+      result.appendChild(pageBox);
+    }
+
+  }catch(error){
+
+    result.innerHTML =
+      '<p>Unable to convert this PDF. Please try another PDF file.</p>';
+
+    console.error(error);
+
+  }
+
+}
+
+</script></body>
+</html>
