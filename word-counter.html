@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Word Counter - ToolMitra</title>
+<meta name="description" content="Count words, characters and sentences online for free with ToolMitra.">
+
+<style>
+body{
+  font-family:Arial,sans-serif;
+  margin:0;
+  background:#f5f7fb;
+  color:#222;
+}
+
+header{
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  color:white;
+  text-align:center;
+  padding:35px 15px;
+}
+
+.container{
+  max-width:800px;
+  margin:30px auto;
+  padding:15px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+textarea{
+  width:100%;
+  min-height:250px;
+  padding:15px;
+  box-sizing:border-box;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+  resize:vertical;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+
+.stat{
+  background:#f5f7fb;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  font-size:24px;
+  color:#2563eb;
+}
+
+.back{
+  display:inline-block;
+  margin-top:25px;
+  color:#2563eb;
+  text-decoration:none;
+}
+
+@media(max-width:600px){
+  .stats{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📝 Word Counter</h1>
+  <p>Count words and characters instantly</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Word Counter</h2>
+
+<textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="wordCount">0</strong>
+Words
+</div>
+
+<div class="stat">
+<strong id="charCount">0</strong>
+Characters
+</div>
+
+<div class="stat">
+<strong id="sentenceCount">0</strong>
+Sentences
+</div>
+
+</div>
+
+<a class="back" href="index.html">← Back to ToolMitra</a>
+
+</div>
+
+</div>
+
+<script>
+
+const textInput=document.getElementById('textInput');
+
+textInput.addEventListener('input',function(){
+
+const text=this.value;
+
+const words=text.trim()
+? text.trim().split(/\s+/).length
+: 0;
+
+const characters=text.length;
+
+const sentences=text
+.split(/[.!?]+/)
+.filter(sentence=>sentence.trim().length>0)
+.length;
+
+document.getElementById('wordCount').textContent=words;
+
+document.getElementById('charCount').textContent=characters;
+
+document.getElementById('sentenceCount').textContent=sentences;
+
+});
+
+</script>
+
+</body>
+</html>
