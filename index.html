@@ -1,183 +1,196 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ToolMitra - Free Online Tools</title>
-
-<style>
-*{box-sizing:border-box}
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ToolMitra - Free Online Tools</title><meta name="description" content="ToolMitra provides free and easy-to-use online tools including image compressor, image resizer, percentage calculator and age calculator."><style>
+*{
+  box-sizing:border-box;
+}
 
 body{
-font-family:Arial,sans-serif;
-margin:0;
-background:#f5f7fb;
-color:#222
+  font-family:Arial,sans-serif;
+  margin:0;
+  background:#f5f7fb;
+  color:#222;
 }
 
 header{
-background:#2563eb;
-color:white;
-text-align:center;
-padding:35px 15px
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  color:white;
+  text-align:center;
+  padding:45px 15px;
 }
 
 header h1{
-margin:0 0 10px;
-font-size:34px
+  margin:0 0 10px;
+  font-size:38px;
 }
 
 header p{
-margin:0;
-font-size:17px
+  margin:0;
+  font-size:17px;
+  opacity:.95;
 }
 
 .container{
-max-width:900px;
-margin:30px auto;
-padding:15px
+  max-width:1000px;
+  margin:30px auto;
+  padding:15px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.section-title h2{
+  margin-bottom:8px;
+  font-size:28px;
+}
+
+.section-title p{
+  color:#666;
 }
 
 .tools{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:18px
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
 }
 
 .tool{
-background:white;
-padding:25px;
-border-radius:15px;
-text-align:center;
-box-shadow:0 3px 12px rgba(0,0,0,.08)
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  transition:.2s;
+}
+
+.tool:hover{
+  transform:translateY(-3px);
 }
 
 .tool h2{
-font-size:20px;
-margin-bottom:10px
+  font-size:20px;
+  margin-bottom:10px;
 }
 
 .tool p{
-color:#666
+  color:#666;
+  min-height:45px;
 }
 
 button{
-background:#2563eb;
-color:white;
-border:0;
-padding:11px 18px;
-border-radius:8px;
-cursor:pointer;
-font-size:15px
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:11px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+button:hover{
+  background:#1d4ed8;
 }
 
 .tool-area{
-display:none;
-margin-top:25px;
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 3px 12px rgba(0,0,0,.08);
-text-align:center
+  display:none;
+  background:white;
+  margin-top:25px;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
 }
 
-input[type=file]{
-margin:15px 0;
-max-width:100%
+.tool-area h2{
+  color:#2563eb;
 }
 
-input[type=number]{
-padding:10px;
-width:140px;
-margin:5px;
-border:1px solid #ccc;
-border-radius:7px
-}
-
-input[type=range]{
-width:100%;
-max-width:350px
+input{
+  padding:10px;
+  margin:6px 0;
+  border:1px solid #ccc;
+  border-radius:7px;
+  max-width:100%;
 }
 
 .result{
-margin-top:20px;
-padding:15px;
-background:#f5f7fb;
-border-radius:10px
-}
-
-.download{
-display:inline-block;
-margin-top:15px;
-background:#16a34a;
-color:white;
-text-decoration:none;
-padding:11px 18px;
-border-radius:8px
+  margin-top:15px;
+  font-weight:bold;
+  font-size:18px;
 }
 
 footer{
-text-align:center;
-padding:30px;
-color:#666
+  margin-top:40px;
+  background:#111827;
+  color:#d1d5db;
+  text-align:center;
+  padding:30px 15px;
 }
-</style>
-</head>
 
-<body>
+.footer-links{
+  margin-top:15px;
+}
 
-<header>
-<h1>🛠️ ToolMitra</h1>
-<p>Free Online Tools for Everyone</p>
-</header>
+.footer-links a{
+  color:white;
+  text-decoration:none;
+  margin:0 8px;
+  font-size:14px;
+}
 
-<div class="container">
+.footer-links a:hover{
+  text-decoration:underline;
+}
 
-<div class="tools">
-
-<div class="tool">
-<h2>📸 Image Compressor</h2>
-<p>Reduce image size quickly and easily.</p>
-<button onclick="showTool('compressor')">Open Tool</button>
+.small{
+  font-size:13px;
+  color:#9ca3af;
+  margin-top:15px;
+}
+</style></head><body><header>
+  <h1>🛠️ ToolMitra</h1>
+  <p>Free Online Tools for Everyone</p>
+</header><div class="container">  <div class="section-title">
+    <h2>Useful Online Tools</h2>
+    <p>Simple, fast and free tools for everyday needs.</p>
+  </div>  <div class="tools"><div class="tool">
+  <h2>📸 Image Compressor</h2>
+  <p>Reduce image size quickly while keeping good quality.</p>
+  <button onclick="showTool('compressor')">Open Tool</button>
 </div>
 
 <div class="tool">
-<h2>📏 Image Resizer</h2>
-<p>Resize your images online.</p>
-<button onclick="showTool('resizer')">Open Tool</button>
+  <h2>📏 Image Resizer</h2>
+  <p>Resize your images to your preferred dimensions.</p>
+  <button onclick="showTool('resizer')">Open Tool</button>
 </div>
 
 <div class="tool">
-<h2>🧮 Percentage Calculator</h2>
-<p>Calculate percentages easily.</p>
-<button onclick="showTool('percentage')">Open Tool</button>
+  <h2>🧮 Percentage Calculator</h2>
+  <p>Calculate percentages quickly and easily.</p>
+  <button onclick="showTool('percentage')">Open Tool</button>
 </div>
 
 <div class="tool">
-<h2>🎂 Age Calculator</h2>
-<p>Calculate your exact age.</p>
-<button onclick="showTool('age')">Open Tool</button>
+  <h2>🎂 Age Calculator</h2>
+  <p>Calculate your age from your date of birth.</p>
+  <button onclick="showTool('age')">Open Tool</button>
 </div>
 
-</div>
+  </div>  <!-- IMAGE COMPRESSOR -->  <div id="compressor" class="tool-area"><h2>📸 Image Compressor</h2>
 
-
-<!-- IMAGE COMPRESSOR -->
-
-<div id="compressor" class="tool-area">
-
-<h2>📸 Image Compressor</h2>
-<p>Select an image and reduce its file size.</p>
+<p>Select an image to reduce its file size.</p>
 
 <input type="file" id="compressInput" accept="image/*">
 
-<br>
-
-<label>Quality: <strong><span id="qualityValue">70</span>%</strong></label>
-
 <br><br>
 
+<label>Quality:</label>
 <input type="range" id="quality" min="10" max="100" value="70">
+
+<span id="qualityValue">70%</span>
 
 <br><br>
 
@@ -185,22 +198,15 @@ color:#666
 
 <div id="compressResult" class="result"></div>
 
-</div>
+  </div>  <!-- IMAGE RESIZER -->  <div id="resizer" class="tool-area"><h2>📏 Image Resizer</h2>
 
-
-<!-- IMAGE RESIZER -->
-
-<div id="resizer" class="tool-area">
-
-<h2>📏 Image Resizer</h2>
-<p>Resize your image to your desired dimensions.</p>
+<p>Select an image and enter the desired width.</p>
 
 <input type="file" id="resizeInput" accept="image/*">
 
 <br>
 
-<input type="number" id="resizeWidth" placeholder="Width (px)">
-<input type="number" id="resizeHeight" placeholder="Height (px)">
+<input type="number" id="resizeWidth" placeholder="Width in pixels">
 
 <br><br>
 
@@ -208,19 +214,15 @@ color:#666
 
 <div id="resizeResult" class="result"></div>
 
-</div>
+  </div>  <!-- PERCENTAGE CALCULATOR -->  <div id="percentage" class="tool-area"><h2>🧮 Percentage Calculator</h2>
 
+<p>Find a percentage of a number.</p>
 
-<!-- PERCENTAGE -->
+<input type="number" id="percent" placeholder="Percentage">
 
-<div id="percentage" class="tool-area">
+<br>
 
-<h2>🧮 Percentage Calculator</h2>
-
-<p>What is X% of Y?</p>
-
-<input type="number" id="percentX" placeholder="X">
-<input type="number" id="percentY" placeholder="Y">
+<input type="number" id="number" placeholder="Number">
 
 <br><br>
 
@@ -228,18 +230,11 @@ color:#666
 
 <div id="percentageResult" class="result"></div>
 
-</div>
+  </div>  <!-- AGE CALCULATOR -->  <div id="age" class="tool-area"><h2>🎂 Age Calculator</h2>
 
+<p>Select your date of birth.</p>
 
-<!-- AGE -->
-
-<div id="age" class="tool-area">
-
-<h2>🎂 Age Calculator</h2>
-
-<p>Enter your date of birth.</p>
-
-<input type="date" id="birthDate">
+<input type="date" id="dob">
 
 <br><br>
 
@@ -247,216 +242,221 @@ color:#666
 
 <div id="ageResult" class="result"></div>
 
-</div>
+  </div></div><footer><strong>🛠️ ToolMitra</strong>
 
-</div>
-
-<footer>
-© 2026 ToolMitra. Free online tools.
-</footer>
-
-
-<script>
+  <div class="footer-links">
+    <a href="about.html">About Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="contact.html">Contact Us</a>
+  </div>  <div class="small">
+    © 2026 ToolMitra. All rights reserved.
+  </div></footer><script>
 
 function showTool(id){
 
-document.querySelectorAll(".tool-area").forEach(function(area){
-area.style.display="none";
-});
+  document.querySelectorAll('.tool-area').forEach(function(area){
+    area.style.display='none';
+  });
 
-document.getElementById(id).style.display="block";
+  document.getElementById(id).style.display='block';
 
-document.getElementById(id).scrollIntoView({
-behavior:"smooth"
-});
+  document.getElementById(id).scrollIntoView({
+    behavior:'smooth'
+  });
 
 }
 
 
-/* COMPRESSOR */
+document.getElementById('quality').addEventListener('input',function(){
 
-const qualitySlider=document.getElementById("quality");
+  document.getElementById('qualityValue').textContent=this.value+'%';
 
-qualitySlider.addEventListener("input",function(){
-document.getElementById("qualityValue").textContent=this.value;
 });
+
 
 function compressImage(){
 
-const input=document.getElementById("compressInput");
-const result=document.getElementById("compressResult");
+  const file=document.getElementById('compressInput').files[0];
 
-if(!input.files.length){
-alert("Please select an image first.");
-return;
-}
+  if(!file){
+    alert('Please select an image first.');
+    return;
+  }
 
-const file=input.files[0];
+  const quality=document.getElementById('quality').value/100;
 
-const reader=new FileReader();
+  const reader=new FileReader();
 
-reader.onload=function(event){
+  reader.onload=function(e){
 
-const img=new Image();
+    const img=new Image();
 
-img.onload=function(){
+    img.onload=function(){
 
-const canvas=document.createElement("canvas");
-const ctx=canvas.getContext("2d");
+      const canvas=document.createElement('canvas');
 
-let width=img.width;
-let height=img.height;
+      canvas.width=img.width;
+      canvas.height=img.height;
 
-const maxWidth=2000;
+      const ctx=canvas.getContext('2d');
 
-if(width>maxWidth){
-height=Math.round(height*maxWidth/width);
-width=maxWidth;
-}
+      ctx.drawImage(img,0,0);
 
-canvas.width=width;
-canvas.height=height;
+      canvas.toBlob(function(blob){
 
-ctx.drawImage(img,0,0,width,height);
+        const url=URL.createObjectURL(blob);
 
-const quality=Number(qualitySlider.value)/100;
+        const link=document.createElement('a');
 
-canvas.toBlob(function(blob){
+        link.href=url;
+        link.download='compressed-image.jpg';
+        link.textContent='⬇️ Download Compressed Image';
 
-const url=URL.createObjectURL(blob);
+        document.getElementById('compressResult').innerHTML=
+          'Original: '+Math.round(file.size/1024)+' KB<br>'+
+          'Compressed: '+Math.round(blob.size/1024)+' KB<br><br>';
 
-const originalKB=(file.size/1024).toFixed(1);
-const compressedKB=(blob.size/1024).toFixed(1);
+        document.getElementById('compressResult').appendChild(link);
 
-result.innerHTML=
-"<p><strong>Original:</strong> "+originalKB+" KB</p>"+
-"<p><strong>Compressed:</strong> "+compressedKB+" KB</p>"+
-"<a class='download' href='"+url+"' download='toolmitra-compressed.jpg'>⬇️ Download Compressed Image</a>";
+      },'image/jpeg',quality);
 
-},"image/jpeg",quality);
+    };
 
-};
+    img.src=e.target.result;
 
-img.src=event.target.result;
+  };
 
-};
-
-reader.readAsDataURL(file);
+  reader.readAsDataURL(file);
 
 }
 
-
-/* RESIZER */
 
 function resizeImage(){
 
-const input=document.getElementById("resizeInput");
-const width=document.getElementById("resizeWidth").value;
-const height=document.getElementById("resizeHeight").value;
-const result=document.getElementById("resizeResult");
+  const file=document.getElementById('resizeInput').files[0];
 
-if(!input.files.length){
-alert("Please select an image first.");
-return;
+  const width=parseInt(document.getElementById('resizeWidth').value);
+
+  if(!file || !width){
+
+    alert('Please select an image and enter width.');
+
+    return;
+  }
+
+  const reader=new FileReader();
+
+  reader.onload=function(e){
+
+    const img=new Image();
+
+    img.onload=function(){
+
+      const ratio=width/img.width;
+
+      const height=Math.round(img.height*ratio);
+
+      const canvas=document.createElement('canvas');
+
+      canvas.width=width;
+      canvas.height=height;
+
+      const ctx=canvas.getContext('2d');
+
+      ctx.drawImage(img,0,0,width,height);
+
+      canvas.toBlob(function(blob){
+
+        const url=URL.createObjectURL(blob);
+
+        const link=document.createElement('a');
+
+        link.href=url;
+
+        link.download='resized-image.jpg';
+
+        link.textContent='⬇️ Download Resized Image';
+
+        document.getElementById('resizeResult').innerHTML=
+          'New Size: '+width+' × '+height+' pixels<br><br>';
+
+        document.getElementById('resizeResult').appendChild(link);
+
+      },'image/jpeg',0.9);
+
+    };
+
+    img.src=e.target.result;
+
+  };
+
+  reader.readAsDataURL(file);
+
 }
 
-if(!width || !height){
-alert("Please enter width and height.");
-return;
-}
-
-const reader=new FileReader();
-
-reader.onload=function(event){
-
-const img=new Image();
-
-img.onload=function(){
-
-const canvas=document.createElement("canvas");
-
-canvas.width=Number(width);
-canvas.height=Number(height);
-
-const ctx=canvas.getContext("2d");
-
-ctx.drawImage(img,0,0,Number(width),Number(height));
-
-canvas.toBlob(function(blob){
-
-const url=URL.createObjectURL(blob);
-
-result.innerHTML=
-"<p>Image resized to <strong>"+width+" × "+height+" px</strong></p>"+
-"<a class='download' href='"+url+"' download='toolmitra-resized.jpg'>⬇️ Download Resized Image</a>";
-
-},"image/jpeg",0.90);
-
-};
-
-img.src=event.target.result;
-
-};
-
-reader.readAsDataURL(input.files[0]);
-
-}
-
-
-/* PERCENTAGE */
 
 function calculatePercentage(){
 
-const x=Number(document.getElementById("percentX").value);
-const y=Number(document.getElementById("percentY").value);
+  const percent=parseFloat(document.getElementById('percent').value);
 
-if(!y){
-alert("Please enter both numbers.");
-return;
+  const number=parseFloat(document.getElementById('number').value);
+
+  if(isNaN(percent)||isNaN(number)){
+
+    alert('Please enter both values.');
+
+    return;
+
+  }
+
+  const result=(percent/100)*number;
+
+  document.getElementById('percentageResult').textContent=
+    percent+'% of '+number+' = '+result;
+
 }
 
-const answer=(x/100)*y;
-
-document.getElementById("percentageResult").innerHTML=
-"<strong>"+x+"% of "+y+" = "+answer+"</strong>";
-
-}
-
-
-/* AGE CALCULATOR */
 
 function calculateAge(){
 
-const birth=document.getElementById("birthDate").value;
+  const dobValue=document.getElementById('dob').value;
 
-if(!birth){
-alert("Please select your date of birth.");
-return;
+  if(!dobValue){
+
+    alert('Please select your date of birth.');
+
+    return;
+
+  }
+
+  const dob=new Date(dobValue);
+
+  const today=new Date();
+
+  let years=today.getFullYear()-dob.getFullYear();
+
+  let months=today.getMonth()-dob.getMonth();
+
+  let days=today.getDate()-dob.getDate();
+
+  if(days<0){
+
+    months--;
+
+  }
+
+  if(months<0){
+
+    years--;
+    months+=12;
+
+  }
+
+  document.getElementById('ageResult').textContent=
+    'Your age is approximately '+years+' years and '+months+' months.';
+
 }
 
-const dob=new Date(birth);
-const today=new Date();
-
-let years=today.getFullYear()-dob.getFullYear();
-let months=today.getMonth()-dob.getMonth();
-let days=today.getDate()-dob.getDate();
-
-if(days<0){
-months--;
-days+=new Date(today.getFullYear(),today.getMonth(),0).getDate();
-}
-
-if(months<0){
-years--;
-months+=12;
-}
-
-document.getElementById("ageResult").innerHTML=
-"<strong>Your age is "+years+" years, "+months+" months, and "+days+" days.</strong>";
-
-}
-
-</script>
-
-</body>
+</script></body>
 </html>
