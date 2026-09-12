@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PNG to JPG Converter - ToolMitra</title>
+<meta name="description" content="Convert PNG images to JPG format online for free with ToolMitra.">
+
+<style>
+body{
+  font-family:Arial,sans-serif;
+  margin:0;
+  background:#f5f7fb;
+  color:#222;
+}
+
+header{
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  color:white;
+  text-align:center;
+  padding:35px 15px;
+}
+
+.container{
+  max-width:800px;
+  margin:30px auto;
+  padding:15px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+input{
+  margin:20px 0;
+}
+
+button{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+#result{
+  margin-top:20px;
+}
+
+#preview{
+  max-width:100%;
+  margin-top:20px;
+  border-radius:8px;
+}
+
+.download{
+  display:inline-block;
+  margin-top:15px;
+  background:#16a34a;
+  color:white;
+  padding:10px 15px;
+  border-radius:7px;
+  text-decoration:none;
+}
+
+.back{
+  display:inline-block;
+  margin-top:25px;
+  color:#2563eb;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🖼️ PNG to JPG</h1>
+  <p>Convert PNG images to JPG format</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>PNG to JPG Converter</h2>
+
+<p>Select a PNG image and convert it to JPG.</p>
+
+<input type="file" id="imageInput" accept="image/png">
+
+<br>
+
+<button onclick="convertImage()">Convert to JPG</button>
+
+<div id="result"></div>
+
+<a class="back" href="index.html">← Back to ToolMitra</a>
+
+</div>
+
+</div>
+
+<script>
+
+function convertImage(){
+
+ 
