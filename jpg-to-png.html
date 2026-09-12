@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPG to PNG Converter - ToolMitra</title>
+<meta name="description" content="Convert JPG images to PNG format online for free with ToolMitra.">
+
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f5f7fb;color:#222}
+header{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;text-align:center;padding:35px 15px}
+.container{max-width:800px;margin:30px auto;padding:15px}
+.card{background:white;padding:25px;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,.08);text-align:center}
+input{margin:20px 0}
+button{background:#2563eb;color:white;border:0;padding:12px 20px;border-radius:8px;cursor:pointer;font-size:15px}
+#result{margin-top:20px}
+#preview{max-width:100%;margin-top:20px;border-radius:8px}
+.download{display:inline-block;margin-top:15px;background:#16a34a;color:white;padding:10px 15px;border-radius:7px;text-decoration:none}
+.back{display:inline-block;margin-top:25px;color:#2563eb;text-decoration:none}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🖼️ JPG to PNG</h1>
+<p>Convert JPG images to PNG format</p>
+</header>
+
+<div class="container">
+<div class="card">
+
+<h2>JPG to PNG Converter</h2>
+<p>Select a JPG image and convert it to PNG.</p>
+
+<input type="file" id="imageInput" accept="image/jpeg,image/jpg">
+
+<br>
+
+<button onclick="convertImage()">Convert to PNG</button>
+
+<div id="result"></div>
+
+<a class="back" href="index.html">← Back to ToolMitra</a>
+
+</div>
+</div>
+
+<script>
+function convertImage(){
+
+const input=document.getElementById('imageInput');
+const result=document.getElementById('result');
+
+if(!input.files.length){
+alert('Please select a JPG image first.');
+return;
+}
+
+const file=input.files[0];
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+const img=new Image();
+
+img.onload=function(){
+
+const canvas=document.createElement('canvas');
+
+canvas.width=img.width;
+canvas.height=img.height;
+
+const ctx=canvas.getContext('2d');
+
+ctx.drawImage(img,0,0);
+
+const png=canvas.toDataURL('image/png');
+
+result.innerHTML=
+'<img id="preview" src="'+png+'">'+
+'<br>'+
+'<a class="download" href="'+png+'" download="converted-image.png">⬇️ Download PNG</a>';
+
+};
+
+img.src=e.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+}
+</script>
+
+</body>
+</html>
