@@ -9,110 +9,117 @@
 *{box-sizing:border-box}
 
 body{
-  font-family:Arial,sans-serif;
-  margin:0;
-  background:#f5f7fb;
-  color:#222;
+font-family:Arial,sans-serif;
+margin:0;
+background:#f5f7fb;
+color:#222
 }
 
 header{
-  background:#2563eb;
-  color:white;
-  text-align:center;
-  padding:35px 15px;
+background:#2563eb;
+color:white;
+text-align:center;
+padding:35px 15px
 }
 
 header h1{
-  margin:0 0 10px;
-  font-size:34px;
+margin:0 0 10px;
+font-size:34px
 }
 
 header p{
-  margin:0;
-  font-size:17px;
+margin:0;
+font-size:17px
 }
 
 .container{
-  max-width:900px;
-  margin:30px auto;
-  padding:15px;
+max-width:900px;
+margin:30px auto;
+padding:15px
 }
 
 .tools{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px
 }
 
 .tool{
-  background:white;
-  padding:25px;
-  border-radius:15px;
-  text-align:center;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
+background:white;
+padding:25px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 3px 12px rgba(0,0,0,.08)
 }
 
 .tool h2{
-  font-size:20px;
-  margin-bottom:10px;
+font-size:20px;
+margin-bottom:10px
 }
 
 .tool p{
-  color:#666;
+color:#666
 }
 
 button{
-  background:#2563eb;
-  color:white;
-  border:none;
-  padding:11px 18px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:15px;
+background:#2563eb;
+color:white;
+border:0;
+padding:11px 18px;
+border-radius:8px;
+cursor:pointer;
+font-size:15px
 }
 
-button:hover{
-  opacity:.9;
+.tool-area{
+display:none;
+margin-top:25px;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 3px 12px rgba(0,0,0,.08);
+text-align:center
 }
 
-#compressor{
-  display:none;
-  margin-top:25px;
-  background:white;
-  padding:25px;
-  border-radius:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
-  text-align:center;
+input[type=file]{
+margin:15px 0;
+max-width:100%
 }
 
-input[type="file"]{
-  margin:15px 0;
-  max-width:100%;
+input[type=number]{
+padding:10px;
+width:140px;
+margin:5px;
+border:1px solid #ccc;
+border-radius:7px
 }
 
-#quality{
-  width:100%;
-  max-width:350px;
+input[type=range]{
+width:100%;
+max-width:350px
 }
 
-#result{
-  margin-top:20px;
+.result{
+margin-top:20px;
+padding:15px;
+background:#f5f7fb;
+border-radius:10px
 }
 
 .download{
-  display:inline-block;
-  margin-top:15px;
-  background:#16a34a;
-  color:white;
-  text-decoration:none;
-  padding:11px 18px;
-  border-radius:8px;
+display:inline-block;
+margin-top:15px;
+background:#16a34a;
+color:white;
+text-decoration:none;
+padding:11px 18px;
+border-radius:8px
 }
 
 footer{
-  text-align:center;
-  padding:30px;
-  color:#666;
+text-align:center;
+padding:30px;
+color:#666
 }
 </style>
 </head>
@@ -120,167 +127,333 @@ footer{
 <body>
 
 <header>
-  <h1>🛠️ ToolMitra</h1>
-  <p>Free Online Tools for Everyone</p>
+<h1>🛠️ ToolMitra</h1>
+<p>Free Online Tools for Everyone</p>
 </header>
 
 <div class="container">
 
-  <div class="tools">
+<div class="tools">
 
-    <div class="tool">
-      <h2>📸 Image Compressor</h2>
-      <p>Reduce image size quickly and easily.</p>
-      <button onclick="openCompressor()">Open Tool</button>
-    </div>
+<div class="tool">
+<h2>📸 Image Compressor</h2>
+<p>Reduce image size quickly and easily.</p>
+<button onclick="showTool('compressor')">Open Tool</button>
+</div>
 
-    <div class="tool">
-      <h2>📏 Image Resizer</h2>
-      <p>Resize your images online.</p>
-      <button>Coming Soon</button>
-    </div>
+<div class="tool">
+<h2>📏 Image Resizer</h2>
+<p>Resize your images online.</p>
+<button onclick="showTool('resizer')">Open Tool</button>
+</div>
 
-    <div class="tool">
-      <h2>🧮 Percentage Calculator</h2>
-      <p>Calculate percentages easily.</p>
-      <button>Coming Soon</button>
-    </div>
+<div class="tool">
+<h2>🧮 Percentage Calculator</h2>
+<p>Calculate percentages easily.</p>
+<button onclick="showTool('percentage')">Open Tool</button>
+</div>
 
-    <div class="tool">
-      <h2>🎂 Age Calculator</h2>
-      <p>Calculate your exact age.</p>
-      <button>Coming Soon</button>
-    </div>
+<div class="tool">
+<h2>🎂 Age Calculator</h2>
+<p>Calculate your exact age.</p>
+<button onclick="showTool('age')">Open Tool</button>
+</div>
 
-  </div>
+</div>
 
-  <div id="compressor">
 
-    <h2>📸 Image Compressor</h2>
-    <p>Select an image and reduce its file size.</p>
+<!-- IMAGE COMPRESSOR -->
 
-    <input type="file" id="imageInput" accept="image/*">
+<div id="compressor" class="tool-area">
 
-    <br>
+<h2>📸 Image Compressor</h2>
+<p>Select an image and reduce its file size.</p>
 
-    <label>
-      Quality:
-      <strong><span id="qualityValue">70</span>%</strong>
-    </label>
+<input type="file" id="compressInput" accept="image/*">
 
-    <br><br>
+<br>
 
-    <input
-      type="range"
-      id="quality"
-      min="10"
-      max="100"
-      value="70"
-    >
+<label>Quality: <strong><span id="qualityValue">70</span>%</strong></label>
 
-    <br><br>
+<br><br>
 
-    <button onclick="compressImage()">Compress Image</button>
+<input type="range" id="quality" min="10" max="100" value="70">
 
-    <div id="result"></div>
+<br><br>
 
-  </div>
+<button onclick="compressImage()">Compress Image</button>
+
+<div id="compressResult" class="result"></div>
+
+</div>
+
+
+<!-- IMAGE RESIZER -->
+
+<div id="resizer" class="tool-area">
+
+<h2>📏 Image Resizer</h2>
+<p>Resize your image to your desired dimensions.</p>
+
+<input type="file" id="resizeInput" accept="image/*">
+
+<br>
+
+<input type="number" id="resizeWidth" placeholder="Width (px)">
+<input type="number" id="resizeHeight" placeholder="Height (px)">
+
+<br><br>
+
+<button onclick="resizeImage()">Resize Image</button>
+
+<div id="resizeResult" class="result"></div>
+
+</div>
+
+
+<!-- PERCENTAGE -->
+
+<div id="percentage" class="tool-area">
+
+<h2>🧮 Percentage Calculator</h2>
+
+<p>What is X% of Y?</p>
+
+<input type="number" id="percentX" placeholder="X">
+<input type="number" id="percentY" placeholder="Y">
+
+<br><br>
+
+<button onclick="calculatePercentage()">Calculate</button>
+
+<div id="percentageResult" class="result"></div>
+
+</div>
+
+
+<!-- AGE -->
+
+<div id="age" class="tool-area">
+
+<h2>🎂 Age Calculator</h2>
+
+<p>Enter your date of birth.</p>
+
+<input type="date" id="birthDate">
+
+<br><br>
+
+<button onclick="calculateAge()">Calculate Age</button>
+
+<div id="ageResult" class="result"></div>
+
+</div>
 
 </div>
 
 <footer>
-  © 2026 ToolMitra. Free online tools.
+© 2026 ToolMitra. Free online tools.
 </footer>
+
 
 <script>
 
-const qualitySlider = document.getElementById("quality");
-const qualityValue = document.getElementById("qualityValue");
+function showTool(id){
 
-qualitySlider.addEventListener("input", function(){
-  qualityValue.textContent = this.value;
+document.querySelectorAll(".tool-area").forEach(function(area){
+area.style.display="none";
 });
 
-function openCompressor(){
-  const box = document.getElementById("compressor");
-  box.style.display = "block";
-  box.scrollIntoView({behavior:"smooth"});
+document.getElementById(id).style.display="block";
+
+document.getElementById(id).scrollIntoView({
+behavior:"smooth"
+});
+
 }
+
+
+/* COMPRESSOR */
+
+const qualitySlider=document.getElementById("quality");
+
+qualitySlider.addEventListener("input",function(){
+document.getElementById("qualityValue").textContent=this.value;
+});
 
 function compressImage(){
 
-  const input = document.getElementById("imageInput");
-  const result = document.getElementById("result");
+const input=document.getElementById("compressInput");
+const result=document.getElementById("compressResult");
 
-  if(!input.files.length){
-    alert("Please select an image first.");
-    return;
-  }
+if(!input.files.length){
+alert("Please select an image first.");
+return;
+}
 
-  const file = input.files[0];
+const file=input.files[0];
 
-  const reader = new FileReader();
+const reader=new FileReader();
 
-  reader.onload = function(event){
+reader.onload=function(event){
 
-    const img = new Image();
+const img=new Image();
 
-    img.onload = function(){
+img.onload=function(){
 
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
+const canvas=document.createElement("canvas");
+const ctx=canvas.getContext("2d");
 
-      let width = img.width;
-      let height = img.height;
+let width=img.width;
+let height=img.height;
 
-      const maxWidth = 2000;
+const maxWidth=2000;
 
-      if(width > maxWidth){
-        height = Math.round(height * maxWidth / width);
-        width = maxWidth;
-      }
+if(width>maxWidth){
+height=Math.round(height*maxWidth/width);
+width=maxWidth;
+}
 
-      canvas.width = width;
-      canvas.height = height;
+canvas.width=width;
+canvas.height=height;
 
-      ctx.drawImage(img,0,0,width,height);
+ctx.drawImage(img,0,0,width,height);
 
-      const quality = Number(qualitySlider.value) / 100;
+const quality=Number(qualitySlider.value)/100;
 
-      canvas.toBlob(function(blob){
+canvas.toBlob(function(blob){
 
-        if(!blob){
-          result.innerHTML = "Unable to compress this image.";
-          return;
-        }
+const url=URL.createObjectURL(blob);
 
-        const url = URL.createObjectURL(blob);
+const originalKB=(file.size/1024).toFixed(1);
+const compressedKB=(blob.size/1024).toFixed(1);
 
-        const originalKB = (file.size / 1024).toFixed(1);
-        const compressedKB = (blob.size / 1024).toFixed(1);
+result.innerHTML=
+"<p><strong>Original:</strong> "+originalKB+" KB</p>"+
+"<p><strong>Compressed:</strong> "+compressedKB+" KB</p>"+
+"<a class='download' href='"+url+"' download='toolmitra-compressed.jpg'>⬇️ Download Compressed Image</a>";
 
-        result.innerHTML = `
-          <p><strong>Original:</strong> ${originalKB} KB</p>
-          <p><strong>Compressed:</strong> ${compressedKB} KB</p>
+},"image/jpeg",quality);
 
-          <a
-            class="download"
-            href="${url}"
-            download="toolmitra-compressed.jpg"
-          >
-            ⬇️ Download Compressed Image
-          </a>
-        `;
+};
 
-      },"image/jpeg",quality);
+img.src=event.target.result;
 
-    };
+};
 
-    img.src = event.target.result;
+reader.readAsDataURL(file);
 
-  };
+}
 
-  reader.readAsDataURL(file);
+
+/* RESIZER */
+
+function resizeImage(){
+
+const input=document.getElementById("resizeInput");
+const width=document.getElementById("resizeWidth").value;
+const height=document.getElementById("resizeHeight").value;
+const result=document.getElementById("resizeResult");
+
+if(!input.files.length){
+alert("Please select an image first.");
+return;
+}
+
+if(!width || !height){
+alert("Please enter width and height.");
+return;
+}
+
+const reader=new FileReader();
+
+reader.onload=function(event){
+
+const img=new Image();
+
+img.onload=function(){
+
+const canvas=document.createElement("canvas");
+
+canvas.width=Number(width);
+canvas.height=Number(height);
+
+const ctx=canvas.getContext("2d");
+
+ctx.drawImage(img,0,0,Number(width),Number(height));
+
+canvas.toBlob(function(blob){
+
+const url=URL.createObjectURL(blob);
+
+result.innerHTML=
+"<p>Image resized to <strong>"+width+" × "+height+" px</strong></p>"+
+"<a class='download' href='"+url+"' download='toolmitra-resized.jpg'>⬇️ Download Resized Image</a>";
+
+},"image/jpeg",0.90);
+
+};
+
+img.src=event.target.result;
+
+};
+
+reader.readAsDataURL(input.files[0]);
+
+}
+
+
+/* PERCENTAGE */
+
+function calculatePercentage(){
+
+const x=Number(document.getElementById("percentX").value);
+const y=Number(document.getElementById("percentY").value);
+
+if(!y){
+alert("Please enter both numbers.");
+return;
+}
+
+const answer=(x/100)*y;
+
+document.getElementById("percentageResult").innerHTML=
+"<strong>"+x+"% of "+y+" = "+answer+"</strong>";
+
+}
+
+
+/* AGE CALCULATOR */
+
+function calculateAge(){
+
+const birth=document.getElementById("birthDate").value;
+
+if(!birth){
+alert("Please select your date of birth.");
+return;
+}
+
+const dob=new Date(birth);
+const today=new Date();
+
+let years=today.getFullYear()-dob.getFullYear();
+let months=today.getMonth()-dob.getMonth();
+let days=today.getDate()-dob.getDate();
+
+if(days<0){
+months--;
+days+=new Date(today.getFullYear(),today.getMonth(),0).getDate();
+}
+
+if(months<0){
+years--;
+months+=12;
+}
+
+document.getElementById("ageResult").innerHTML=
+"<strong>Your age is "+years+" years, "+months+" months, and "+days+" days.</strong>";
+
 }
 
 </script>
