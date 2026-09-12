@@ -1,122 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToolMitra - Free Online Tools</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f7fb;
-      color: #222;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolMitra - Free Online Tools</title>
 
-    header {
-      background: #2563eb;
-      color: white;
-      text-align: center;
-      padding: 35px 15px;
-    }
+<style>
+*{box-sizing:border-box}
 
-    header h1 {
-      margin: 0 0 10px;
-      font-size: 34px;
-    }
+body{
+  font-family:Arial,sans-serif;
+  margin:0;
+  background:#f5f7fb;
+  color:#222;
+}
 
-    header p {
-      margin: 0;
-      font-size: 17px;
-    }
+header{
+  background:#2563eb;
+  color:white;
+  text-align:center;
+  padding:35px 15px;
+}
 
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 15px;
-    }
+header h1{
+  margin:0 0 10px;
+  font-size:34px;
+}
 
-    .tools {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
+header p{
+  margin:0;
+  font-size:17px;
+}
 
-    .tool {
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+.container{
+  max-width:900px;
+  margin:30px auto;
+  padding:15px;
+}
 
-    .tool h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
+.tools{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
 
-    .tool p {
-      color: #666;
-    }
+.tool{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
 
-    button {
-      background: #2563eb;
-      color: white;
-      border: none;
-      padding: 11px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+.tool h2{
+  font-size:20px;
+  margin-bottom:10px;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #666;
-    }
-  </style>
+.tool p{
+  color:#666;
+}
+
+button{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:11px 18px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+#compressor{
+  display:none;
+  margin-top:25px;
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+input[type="file"]{
+  margin:15px 0;
+  max-width:100%;
+}
+
+#quality{
+  width:100%;
+  max-width:350px;
+}
+
+#result{
+  margin-top:20px;
+}
+
+.download{
+  display:inline-block;
+  margin-top:15px;
+  background:#16a34a;
+  color:white;
+  text-decoration:none;
+  padding:11px 18px;
+  border-radius:8px;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#666;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>🛠️ ToolMitra</h1>
-    <p>Free Online Tools for Everyone</p>
-  </header>
+<header>
+  <h1>🛠️ ToolMitra</h1>
+  <p>Free Online Tools for Everyone</p>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <div class="tools">
+  <div class="tools">
 
-      <div class="tool">
-        <h2>📸 Image Compressor</h2>
-        <p>Reduce image size quickly and easily.</p>
-        <button>Open Tool</button>
-      </div>
+    <div class="tool">
+      <h2>📸 Image Compressor</h2>
+      <p>Reduce image size quickly and easily.</p>
+      <button onclick="openCompressor()">Open Tool</button>
+    </div>
 
-      <div class="tool">
-        <h2>📏 Image Resizer</h2>
-        <p>Resize your images online.</p>
-        <button>Coming Soon</button>
-      </div>
+    <div class="tool">
+      <h2>📏 Image Resizer</h2>
+      <p>Resize your images online.</p>
+      <button>Coming Soon</button>
+    </div>
 
-      <div class="tool">
-        <h2>🧮 Percentage Calculator</h2>
-        <p>Calculate percentages easily.</p>
-        <button>Coming Soon</button>
-      </div>
+    <div class="tool">
+      <h2>🧮 Percentage Calculator</h2>
+      <p>Calculate percentages easily.</p>
+      <button>Coming Soon</button>
+    </div>
 
-      <div class="tool">
-        <h2>🎂 Age Calculator</h2>
-        <p>Calculate your exact age.</p>
-        <button>Coming Soon</button>
-      </div>
-
+    <div class="tool">
+      <h2>🎂 Age Calculator</h2>
+      <p>Calculate your exact age.</p>
+      <button>Coming Soon</button>
     </div>
 
   </div>
 
-  <footer>
-    © 2026 ToolMitra. Free online tools.
-  </footer>
+  <div id="compressor">
+
+    <h2>📸 Image Compressor</h2>
+    <p>Select an image and reduce its file size.</p>
+
+    <input type="file" id="imageInput" accept="image/*">
+
+    <br>
+
+    <label>
+      Quality:
+      <strong><span id="qualityValue">70</span>%</strong>
+    </label>
+
+    <br><br>
+
+    <input
+      type="range"
+      id="quality"
+      min="10"
+      max="100"
+      value="70"
+    >
+
+    <br><br>
+
+    <button onclick="compressImage()">Compress Image</button>
+
+    <div id="result"></div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 ToolMitra. Free online tools.
+</footer>
+
+<script>
+
+const qualitySlider = document.getElementById("quality");
+const qualityValue = document.getElementById("qualityValue");
+
+qualitySlider.addEventListener("input", function(){
+  qualityValue.textContent = this.value;
+});
+
+function openCompressor(){
+  const box = document.getElementById("compressor");
+  box.style.display = "block";
+  box.scrollIntoView({behavior:"smooth"});
+}
+
+function compressImage(){
+
+  const input = document.getElementById("imageInput");
+  const result = document.getElementById("result");
+
+  if(!input.files.length){
+    alert("Please select an image first.");
+    return;
+  }
+
+  const file = input.files[0];
+
+  const reader = new FileReader();
+
+  reader.onload = function(event){
+
+    const img = new Image();
+
+    img.onload = function(){
+
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      let width = img.width;
+      let height = img.height;
+
+      const maxWidth = 2000;
+
+      if(width > maxWidth){
+        height = Math.round(height * maxWidth / width);
+        width = maxWidth;
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+
+      ctx.drawImage(img,0,0,width,height);
+
+      const quality = Number(qualitySlider.value) / 100;
+
+      canvas.toBlob(function(blob){
+
+        if(!blob){
+          result.innerHTML = "Unable to compress this image.";
+          return;
+        }
+
+        const url = URL.createObjectURL(blob);
+
+        const originalKB = (file.size / 1024).toFixed(1);
+        const compressedKB = (blob.size / 1024).toFixed(1);
+
+        result.innerHTML = `
+          <p><strong>Original:</strong> ${originalKB} KB</p>
+          <p><strong>Compressed:</strong> ${compressedKB} KB</p>
+
+          <a
+            class="download"
+            href="${url}"
+            download="toolmitra-compressed.jpg"
+          >
+            ⬇️ Download Compressed Image
+          </a>
+        `;
+
+      },"image/jpeg",quality);
+
+    };
+
+    img.src = event.target.result;
+
+  };
+
+  reader.readAsDataURL(file);
+}
+
+</script>
 
 </body>
 </html>
